@@ -1,0 +1,3 @@
+[submodule "nodejs-ansible"]
+	path = nodejs-ansible
+	url = git@github.com:aenglund/nodejs-ansible.git

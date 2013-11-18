@@ -1,0 +1,24 @@
+
+---
+- hosts: all
+  user: root
+  sudo: true
+  
+  vars:
+    repo_basedir: ./nodejs-ansible
+    node_version: "0.10.12"
+    node_prefix: "node-v${node_version}"
+    node_tarball: "${node_prefix}.tar.gz"
+    node_path: "/usr/local"
+  
+  tasks:
+    - name: add package $item
+      action: apt pkg=$item state=installed
+      with_items:
+        - git-core
+        - build-essential
+        - checkinstall
+        
+    
+    # Install node.js
+    - include: $repo_basedir/nodejs/tasks/setup.yml
